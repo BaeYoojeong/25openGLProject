@@ -18,19 +18,19 @@
     <ClCompile Include="FileName.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="OBJLoader.cpp">
+    <ClCompile Include="objloader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="OBJLoader.h">
+    <ClCompile Include="objloader.h">
       <Filter>헤더 파일</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
+    <ClCompile Include="shader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Matrix.cpp">
+    <ClCompile Include="matrix.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Boat.cpp">
@@ -38,10 +38,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
+    <ClInclude Include="shader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix.h">
+    <ClInclude Include="matrix.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Boat.h">

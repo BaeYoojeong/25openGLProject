@@ -1,6 +1,5 @@
-C:\컴퓨터그래픽스\25openGLProject\25openGLProject\Boat.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\Boat.obj
 C:\컴퓨터그래픽스\25openGLProject\25openGLProject\main.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\main.obj
-C:\컴퓨터그래픽스\25openGLProject\25openGLProject\Matrix.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\Matrix.obj
-C:\컴퓨터그래픽스\25openGLProject\25openGLProject\OBJLoader.h;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\OBJLoader.obj
-C:\컴퓨터그래픽스\25openGLProject\25openGLProject\OBJLoader.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\OBJLoader.obj
-C:\컴퓨터그래픽스\25openGLProject\25openGLProject\Shader.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\Shader.obj
+C:\컴퓨터그래픽스\25openGLProject\25openGLProject\matrix.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\matrix.obj
+C:\컴퓨터그래픽스\25openGLProject\25openGLProject\objloader.h;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\objloader.obj
+C:\컴퓨터그래픽스\25openGLProject\25openGLProject\objloader.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\objloader.obj
+C:\컴퓨터그래픽스\25openGLProject\25openGLProject\shader.cpp;C:\컴퓨터그래픽스\25openGLProject\25openGLProject\x64\Debug\shader.obj

@@ -6,4 +6,4 @@ struct Vertex {
     float nx, ny, nz;
 };
 
-bool LoadOBJ(const char* path, std::vector<Vertex>& outMesh);
+bool LoadOBJ(const char* path, std::vector<Vertex>& mesh);
