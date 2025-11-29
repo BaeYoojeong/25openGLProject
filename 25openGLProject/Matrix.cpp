@@ -1,4 +1,4 @@
-#include "matrix.h"
+﻿#include "matrix.h"
 #include <cmath>
 
 void MatIdentity(float M[16]) {
@@ -39,7 +39,24 @@ void MatRotateX(float M[16], float angle) {
     M[5] = c;   M[6] = -s;
     M[9] = s;   M[10] = c;
 }
+void MatRotateZ(float* m, float rad)
+{
+    float c = cos(rad);
+    float s = sin(rad);
 
+    m[0] = c;   m[4] = -s;  m[8] = 0;  m[12] = 0;
+    m[1] = s;   m[5] = c;  m[9] = 0;  m[13] = 0;
+    m[2] = 0;   m[6] = 0;  m[10] = 1; m[14] = 0;
+    m[3] = 0;   m[7] = 0;  m[11] = 0; m[15] = 1;
+}
+
+void MatScale(float M[16], float sx, float sy, float sz)
+{
+    MatIdentity(M);
+    M[0] = sx;
+    M[5] = sy;
+    M[10] = sz;
+}
 void MatPerspective(float M[16], float fovDeg, float aspect, float nearZ, float farZ) {
     float fovRad = fovDeg * 3.141592f / 180.0f;
     float f = 1.0f / tan(fovRad / 2.0f);

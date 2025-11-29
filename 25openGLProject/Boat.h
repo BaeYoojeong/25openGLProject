@@ -1,7 +1,7 @@
 #pragma once
 #include <GL/glew.h>
 #include <vector>
-#include "OBJLoader.h"
+#include "objloader.h"
 
 class Boat {
 public:
