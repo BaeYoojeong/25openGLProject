@@ -7,3 +7,4 @@ struct Vertex {
 };
 
 bool LoadOBJ(const char* path, std::vector<Vertex>& mesh);
+void CenterMesh(std::vector<Vertex>& mesh);

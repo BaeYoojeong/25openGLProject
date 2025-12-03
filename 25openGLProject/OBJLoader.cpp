@@ -58,5 +58,33 @@ bool LoadOBJ(const char* path, std::vector<Vertex>& mesh)
         }
     }
 
+
     return true;
+}
+void CenterMesh(std::vector<Vertex>& mesh)
+{
+    if (mesh.empty()) return;
+
+    float minX = mesh[0].px, maxX = mesh[0].px;
+    float minY = mesh[0].py, maxY = mesh[0].py;
+    float minZ = mesh[0].pz, maxZ = mesh[0].pz;
+
+    for (auto& v : mesh) {
+        if (v.px < minX) minX = v.px;
+        if (v.px > maxX) maxX = v.px;
+        if (v.py < minY) minY = v.py;
+        if (v.py > maxY) maxY = v.py;
+        if (v.pz < minZ) minZ = v.pz;
+        if (v.pz > maxZ) maxZ = v.pz;
+    }
+
+    float cx = (minX + maxX) * 0.5f;
+    float cy = (minY + maxY) * 0.5f;
+    float cz = (minZ + maxZ) * 0.5f;
+
+    for (auto& v : mesh) {
+        v.px -= cx;
+        v.py -= cy;
+        v.pz -= cz;
+    }
 }

@@ -1,59 +1,58 @@
 #include "shader.h"
 #include <fstream>
 #include <sstream>
-#include <string>
+#include <iostream>
 
-GLuint LoadShader(const char* vpath, const char* fpath)
-{
+static std::string ReadFile(const char* path) {
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        std::cerr << "Cannot open shader: " << path << std::endl;
+        return "";
+    }
+    std::stringstream ss;
+    ss << file.rdbuf();
+    return ss.str();
+}
 
-    auto read = [&](const char* p) {
-        std::ifstream fs(p);
-        std::stringstream ss;
-        ss << fs.rdbuf();
-        return ss.str();
-        };
+static GLuint Compile(GLenum type, const char* src) {
+    GLuint s = glCreateShader(type);
+    glShaderSource(s, 1, &src, NULL);
+    glCompileShader(s);
 
-    std::string vs = read(vpath);
-    std::string fs = read(fpath);
+    GLint ok;
+    glGetShaderiv(s, GL_COMPILE_STATUS, &ok);
 
-    GLuint VS = glCreateShader(GL_VERTEX_SHADER);
-    const char* vsrc = vs.c_str();
-    glShaderSource(VS, 1, &vsrc, NULL);
-    glCompileShader(VS);
+    if (!ok) {
+        char log[2048];
+        glGetShaderInfoLog(s, 2048, NULL, log);
+        std::cerr << "Shader compile error:\n" << log << std::endl;
+    }
+    return s;
+}
 
-    GLuint FS = glCreateShader(GL_FRAGMENT_SHADER);
-    const char* fsrc = fs.c_str();
-    glShaderSource(FS, 1, &fsrc, NULL);
-    glCompileShader(FS);
+GLuint LoadShader(const char* vpath, const char* fpath) {
+    std::string v = ReadFile(vpath);
+    std::string f = ReadFile(fpath);
+
+    GLuint vs = Compile(GL_VERTEX_SHADER, v.c_str());
+    GLuint fs = Compile(GL_FRAGMENT_SHADER, f.c_str());
 
     GLuint prog = glCreateProgram();
-    glAttachShader(prog, VS);
-    glAttachShader(prog, FS);
+    glAttachShader(prog, vs);
+    glAttachShader(prog, fs);
+
     glLinkProgram(prog);
 
-    glDeleteShader(VS);
-    glDeleteShader(FS);
-    auto check = [](GLuint sh, const char* name) {
-        GLint success;
-        glGetShaderiv(sh, GL_COMPILE_STATUS, &success);
-        if (!success) {
-            char log[2048];
-            glGetShaderInfoLog(sh, 2048, NULL, log);
-            printf("Shader Compile Error (%s): %s\n", name, log);
-        }
-        };
-
-    check(VS, "VERTEX");
-    check(FS, "FRAGMENT");
-
-    GLint linkSuccess;
-    glGetProgramiv(prog, GL_LINK_STATUS, &linkSuccess);
-    if (!linkSuccess) {
+    GLint ok;
+    glGetProgramiv(prog, GL_LINK_STATUS, &ok);
+    if (!ok) {
         char log[2048];
         glGetProgramInfoLog(prog, 2048, NULL, log);
-        printf("Program Link Error: %s\n", log);
+        std::cerr << "Link error:\n" << log << std::endl;
     }
 
+    glDeleteShader(vs);
+    glDeleteShader(fs);
 
     return prog;
 }
